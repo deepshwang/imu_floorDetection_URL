@@ -22,11 +22,17 @@ The file name must contain "wood", "terrazzo", or "tile" (private to URL)
 
 ### Data structure
 
-series_id:          A group index consisting of 128 datum (1 measurement)
+<series_id>          
 
-measurement_number: Datum index within a single series.
+A group index consisting of 128 datum (1 measurement)
 
-row_id:             Unique row id expressed with series and measurement number.
+<measurement_number> 
+
+Datum index within a single series.
+
+<row_id>             
+
+A measurement uniquely expressed with series and measurement number.
 
 ### Contained information
 
