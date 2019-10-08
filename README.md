@@ -3,7 +3,8 @@
  Converts IMU csv data to kaggle format
 
 ## Background
-This code is designed for specific types of data format
+This code is designed for specific types of data format. 
+See more information [here](https://www.kaggle.com/jesucristo/1-smart-robots-most-complete-notebook/notebook)
 
 ## Input Data
 
