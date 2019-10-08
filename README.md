@@ -19,7 +19,7 @@ The data serves to train Convolutional Neural Network (CNN) with cross validatio
 
 In order to do so, the data are categorized into  "series_id", measurement_number", and "row_id".
 
-*series_id:         A group index consisting of 128 datum (1 measurement)
+series_id:         A group index consisting of 128 datum (1 measurement)
 measurement_number: Datum index within a single series.
 row_id:             Unique row id expressed with series and measurement number.
 
