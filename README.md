@@ -8,24 +8,37 @@ See more information [here](https://www.kaggle.com/jesucristo/1-smart-robots-mos
 
 ## Input Data
 
+### Where it came from
+
 Input data is a csv file that is the product of conversion from rosbag file.
 
 This conversion is done by [Atsushi Sakai](https://github.com/AtsushiSakai/rosbag_to_csv)
+
+### Title of the input csv file
+
+The file name must contain "wood", "terrazzo", or "tile" (private to URL)
 
 ## Output Data
 
 ### Data structure
 The data serves to train Convolutional Neural Network (CNN) with cross validation. 
 
-In order to do so, the data are categorized into  "series_id", measurement_number", and "row_id".
+In order to do so, the data are categorized as such.
 
-series_id:         A group index consisting of 128 datum (1 measurement)
+series_id:          A group index consisting of 128 datum (1 measurement)
+
 measurement_number: Datum index within a single series.
+
 row_id:             Unique row id expressed with series and measurement number.
 
 ### Contained information
 The file contains information below (10 columns):
-orientation_X,Y,Z,W(quaternion) / angular_velocity_X,Y,Z / linear_acceleration_X,Y,Z
+
+orientation_X,Y,Z,W(quaternion) 
+
+angular_velocity_X,Y,Z 
+
+linear_acceleration_X,Y,Z
 
 
 ## Prerequisites
