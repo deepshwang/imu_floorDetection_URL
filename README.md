@@ -21,9 +21,6 @@ The file name must contain "wood", "terrazzo", or "tile" (private to URL)
 ## Output Data
 
 ### Data structure
-The data serves to train Convolutional Neural Network (CNN) with cross validation. 
-
-In order to do so, the data are categorized as such.
 
 series_id:          A group index consisting of 128 datum (1 measurement)
 
@@ -32,7 +29,6 @@ measurement_number: Datum index within a single series.
 row_id:             Unique row id expressed with series and measurement number.
 
 ### Contained information
-The file contains information below (10 columns):
 
 orientation_X,Y,Z,W(quaternion) 
 
