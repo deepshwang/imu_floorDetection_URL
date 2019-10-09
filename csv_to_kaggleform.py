@@ -6,7 +6,7 @@ import time
 CLASS_LIST = ["wood", 'tile', 'terazzo']
 
 
-def get_raw_csv(dir):
+def get_raw_csv_list(dir):
     candidates = os.listdir(dir)
     target_csv_list = []
     for name in candidates:
@@ -25,7 +25,7 @@ def refine_csv(src_path):
     df = df[df.angular_velocity_Z != 0]
     df.index = np.arange(0, len(df))
     df['measurement_number'] = df.index % 129
-    df['series_id'] = df.index//129
+    df['series_id'] = df.index // 129
     df['row_id'] = df['series_id'].map(str) + "_" + df["measurement_number"].map(str)
 
     new_cols = ["row_id", "series_id", "measurement_number"] + df.columns.tolist()[:10]
@@ -39,7 +39,7 @@ def refine_csv(src_path):
 
 if __name__ == "__main__":
     target_dir = "raw_data"
-    csv_list = get_raw_csv(target_dir)
+    csv_list = get_raw_csv_list(target_dir)
     print(csv_list)
 
     for csv_path in csv_list:
