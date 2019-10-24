@@ -29,9 +29,11 @@ def plot_dataframe_for_columns(column_name, pd_data_list):
     plt.show()
     fig.savefig("data_comparison.png")
 
-def plot_fft_for_columns(column_name, pd_data_list):
+def plot_fft_for_columns(column_name, pd_data_list, initial_point=None, end_point=None):
     for i, pd_data in enumerate(pd_data_list):
         datapoints=pd_data[column_name].to_numpy()
+        if initial_point!=None and end_point!=None:
+            datapoints=pd_data[column_name].to_numpy()[initial_point:end_point]
         fft_datapoints=abs(np.fft.fft(datapoints))[0:len(datapoints)]
         Fq=20  ### Sampling rate is 20Hz
         approx_freq_range=[x*Fq/len(datapoints) for x in range(len(datapoints))]  # Reference: https://kr.mathworks.com/help/matlab/ref/fft.html
@@ -51,27 +53,6 @@ def plot_fft_for_columns(column_name, pd_data_list):
     plt.show()
 
 
-def plot_fft_w_partial_data(column_name, pd_data_list, initial_point, end_point):
-    for i, pd_data in enumerate(pd_data_list):
-        datapoints=pd_data[column_name].to_numpy()[initial_point:end_point]
-        fft_datapoints=abs(np.fft.fft(datapoints))[0:len(datapoints)]
-        Fq=20  ### Sampling rate is 20Hz
-        approx_freq_range=[x*Fq/len(datapoints) for x in range(len(datapoints))]  # Reference: https://kr.mathworks.com/help/matlab/ref/fft.html
-        half_length=len(approx_freq_range)//2
-        plt.plot(approx_freq_range[0:half_length], fft_datapoints[0:half_length], label=LABEL[i])
-
-
-    plt.legend()
-    plt.xlabel("Frequnecy (Hz)")
-    # plt.xlim(0, 2)
-    plt.ylabel("Magnitude")
-    title="Freq. range of <"+ column_name+">"
-    plt.title(title)
-    fig=plt.gcf()
-    filename="DFT_freq_range_"+column_name+ str(initial_point) + "_to_" + str(end_point) + ".png"
-    fig.savefig(filename)
-    plt.show()
-
 
 
 if __name__ == "__main__":
@@ -85,4 +66,4 @@ if __name__ == "__main__":
 
     # plot_dataframe_for_columns('angular_velocity_Z', pd_data_list)
     # plot_fft_for_columns('angular_velocity_Z', pd_data_list)
-    plot_fft_w_partial_data('angular_velocity_Z', pd_data_list, 700, 830)
+    plot_fft_for_columns('angular_velocity_Z', pd_data_list, 700, 830)
