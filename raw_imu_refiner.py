@@ -16,7 +16,7 @@ class imu_refine:
         for data_class in os.listdir("raw_data"):
             print (data_class+ " : "+ str(i))
             i+=1
-        data_class_select=int(raw_input("Type corresponding index you want to refine."))
+        data_class_select=int(raw_input("Type corresponding index you want to refine:  "))
         wanted_data_class=os.listdir("raw_data")[data_class_select]
         print ("You've selected: " + wanted_data_class)
         return wanted_data_class
@@ -60,6 +60,7 @@ class imu_refine:
             if not os.path.exists(save_folder):
                 os.makedirs(save_folder)
             df.to_csv(save_path)
+        print ("Refining COMPLETE")
 
 if __name__=="__main__":
     refine_obj=imu_refine()
