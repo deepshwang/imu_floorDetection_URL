@@ -1,4 +1,4 @@
-# CSV to Kaggle form 
+# Floor Type Detection and Localization using IMU 
  This code is designed for specific types of data format
  Converts IMU csv data to kaggle format
 
