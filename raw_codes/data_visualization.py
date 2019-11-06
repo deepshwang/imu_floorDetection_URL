@@ -36,9 +36,10 @@ def plot_fft_for_columns(column_name, pd_data_list, initial_point=None, end_poin
             datapoints=pd_data[column_name].to_numpy()[initial_point:end_point]
         fft_datapoints=abs(np.fft.fft(datapoints))[0:len(datapoints)]
         Fq=20  ### Sampling rate is 20Hz
-        approx_freq_range=[x*Fq/len(datapoints) for x in range(len(datapoints))]  # Reference: https://kr.mathworks.com/help/matlab/ref/fft.html
+        approx_freq_range=[x*Fq/float(len(datapoints)) for x in range(len(datapoints))]  # Reference: https://kr.mathworks.com/help/matlab/ref/fft.html
         half_length=len(approx_freq_range)//2
         plt.plot(approx_freq_range[0:half_length], fft_datapoints[0:half_length], label=LABEL[i])
+        print (approx_freq_range[0:half_length])
 
 
     plt.legend()
@@ -56,9 +57,9 @@ def plot_fft_for_columns(column_name, pd_data_list, initial_point=None, end_poin
 
 
 if __name__ == "__main__":
-    target_files = ["refined_result/refined_terazzo_2.csv",
-                    "refined_result/refined_tile_2.csv",
-                    "refined_result/refined_wood_2.csv"]
+    target_files = ["refined_data/kobuki_sample/refined_terazzo_2.csv",
+                    "refined_data/kobuki_sample/refined_tile_2.csv",
+                    "refined_data/kobuki_sample/refined_wood_2.csv"]
 
     plt.rcParams["figure.figsize"] = (20, 15)
 
